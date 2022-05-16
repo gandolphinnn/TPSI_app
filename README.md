@@ -31,16 +31,8 @@
 	 |__logout
 	admin
 	 |__index.php
-	 |__clients
-	 |	 |__* showAll
-	 |	 |__add
-	 |	 |__edit
-	 |__buildings
-	 |	 |__* showAll !!
-	 |	 |__add
-	 |	 |__edit
 	 |__appartments
-	 |	 |__* showAll
+	 |	 |__* showAll !!
 	 |	 |__add
 	 |	 |__edit
 	 |__rents

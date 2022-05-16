@@ -4,6 +4,6 @@
 	<input type="text" id="un"><br>
 	<label for="pw">Password:</label><br>
 	<input type="text" id="pw"><br>
+	<input type="submit"><br>
 	<input type="reset" value="Reset">
-	<input type="submit">
 </form>
