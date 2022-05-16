@@ -35,18 +35,18 @@
 		AND ($min_mensilità IS NULL OR $max_mensilità IS NULL OR mensilità BETWEEN $min_mensilità AND $max_mensilità);
 
 # Root
- |__!db
- |	 |__db_immobiliare.sql		(file di creazione db)
- |	 |__db_schema.png			(schema logico db)
- |
- |__server
- |	 |__db_access.php			(accesso al db)
- |	 |__logic.php				(logica di accesso al db)
- |	 |__mw.php					(middleware server)
- |
- |__client
-	 |__index.html				(view)
-	 |__index.js				(view manipulator)
-	 |__mw.js					(middleware  client)
-	 |__presenter.js			(presenter affitto/appartamenti)
-	 |__style.css				(css)
+	|__!db
+	|	 |__db_immobiliare.sql		(file di creazione db)
+	|	 |__db_schema.png			(schema logico db)
+	|
+	|__server
+	|	 |__db_access.php			(accesso al db)
+	|	 |__logic.php				(logica di accesso al db)
+	|	 |__mw.php					(middleware server)
+	|
+	|__client
+		|__index.html				(view)
+		|__index.js				(view manipulator)
+		|__mw.js					(middleware  client)
+		|__presenter.js			(presenter affitto/appartamenti)
+		|__style.css				(css)
