@@ -1,6 +1,4 @@
-# TPSI_app
-
-# Ruoli
+# Team
 	Gandolfi	: project manager, backend developer
 	Ademi		: database administrator
 	Di Florio	: frontend developer
@@ -20,29 +18,35 @@
 	minimo e massimo impostati dall'utente, e/o numero di locali tra minimo e
 	massimo impostati dall'utente, e/o infine un canone compreso tra un minimo
 	ed un massimo impostati dall'utente.
-
 # Entità
-	Utente: (id_utente PK, username U, password);
-	Edificio: (id_edificio PK, indirizzo U, piani, appartamenti);
+
+	Edificio: (id_edificio PK, codice U, indirizzo, piani, appartamenti);
 	Appartamento: (id_appartamento PK, locali, piano, metratura, id_edificio FK);
-	Affitto: (id_affitto PK, inizio, fine, mensilità, mesi_pagati, id_appartamento FK, id_cliente FK);
-	Cliente: (id_cliente PK, CF U, nome, cognome, data_nascità, contatto U);
-	image.png
+	Affitto: (id_affitto PK, data_inizio, data_fine, mensilità, mesi_pagati, id_appartamento FK, id_cliente FK);
+	Cliente: (id_cliente PK, codice_fiscale U, nome, cognome, data_nascita, telefono U);
 
 # Query
 	1) INSERT INTO affitto (inizio, mensilità, id_appartamento, id_cliente)
 		VALUES($inizio, $mensilità, $id_appartamento, $id_cliente)
 
-	2) //SELECT ap.* FROM appartamento ap LEFT JOIN affitto af WHERE
-	SELECT * FROM abitazione ab LEFT JOIN affitto af ON af.id_abitazione = ab.id_appartamento;
+	2) SELECT ap.* FROM appartamento ap LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento WHERE id_affitto IS NULL
+		AND ($min_metratura IS NULL OR $max_metratura IS NULL OR metratura BETWEEN $min_metratura AND $max_metratura)
+		AND ($min_locali IS NULL OR $max_locali IS NULL OR locali BETWEEN $min_locali AND $max_locali)
+		AND ($min_mensilità IS NULL OR $max_mensilità IS NULL OR mensilità BETWEEN $min_mensilità AND $max_mensilità);
 
 # Root
  |__!db
- |	 |__db_appartamenti.sql
+ |	 |__db_immobiliare.sql		(file di creazione db)
+ |	 |__db_schema.png			(schema logico db)
  |
  |__server
- |	 |__
+ |	 |__db_access.php			(accesso al db)
+ |	 |__logic.php				(logica di accesso al db)
+ |	 |__mw.php					(middleware server)
  |
  |__client
-	 |__index.html
-	 |__index.html
+	 |__index.html				(view)
+	 |__index.js				(view manipulator)
+	 |__mw.js					(middleware  client)
+	 |__presenter.js			(presenter affitto/appartamenti)
+	 |__style.css				(css)

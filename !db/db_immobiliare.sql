@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 16, 2022 alle 20:05
+-- Creato il: Mag 16, 2022 alle 20:26
 -- Versione del server: 10.4.19-MariaDB
 -- Versione PHP: 8.0.7
 
@@ -81,7 +81,9 @@ INSERT INTO `appartamento` (`id_appartamento`, `locali`, `piano`, `metratura`, `
 (7, 5, 4, 100, 7),
 (8, 12, 1, 325, 8),
 (9, 5, 10, 70, 9),
-(10, 7, 2, 150, 10);
+(10, 7, 2, 150, 10),
+(11, 5, 6, 23, 1),
+(12, 5, 4, 23, 1);
 
 -- --------------------------------------------------------
 
@@ -144,26 +146,6 @@ INSERT INTO `edificio` (`id_edificio`, `codice`, `indirizzo`, `piani`, `appartam
 (9, 'i', 'via Tony Montana ', 10, 20),
 (10, 'j', 'via Walter White', 3, 6);
 
--- --------------------------------------------------------
-
---
--- Struttura della tabella `utenti`
---
-
-CREATE TABLE `utenti` (
-  `id_utente` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `utenti`
---
-
-INSERT INTO `utenti` (`id_utente`, `username`, `email`, `password`) VALUES
-(1, 'Admin', 'admin@admin.com', 'admin');
-
 --
 -- Indici per le tabelle scaricate
 --
@@ -204,15 +186,6 @@ ALTER TABLE `edificio`
   ADD KEY `id_edificio` (`id_edificio`);
 
 --
--- Indici per le tabelle `utenti`
---
-ALTER TABLE `utenti`
-  ADD PRIMARY KEY (`id_utente`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `id_utente` (`id_utente`);
-
---
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -226,7 +199,7 @@ ALTER TABLE `affitto`
 -- AUTO_INCREMENT per la tabella `appartamento`
 --
 ALTER TABLE `appartamento`
-  MODIFY `id_appartamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_appartamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `cliente`
@@ -239,12 +212,6 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `edificio`
   MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT per la tabella `utenti`
---
-ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Limiti per le tabelle scaricate
