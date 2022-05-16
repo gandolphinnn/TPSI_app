@@ -33,11 +33,11 @@
 	2) SELECT ap.* FROM appartamento ap LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento
 		WHERE id_affitto IS NULL
 		AND ($min_metratura IS NULL OR $max_metratura IS NULL
-		OR metratura BETWEEN $min_metratura AND $max_metratura)
+			OR metratura BETWEEN $min_metratura AND $max_metratura)
 		AND ($min_locali IS NULL OR $max_locali IS NULL
-		OR locali BETWEEN $min_locali AND $max_locali)
+			OR locali BETWEEN $min_locali AND $max_locali)
 		AND ($min_mensilità IS NULL OR $max_mensilità IS NULL
-		OR mensilità BETWEEN $min_mensilità AND $max_mensilità);
+			OR mensilità BETWEEN $min_mensilità AND $max_mensilità);
 
 # Root
 	|__!db
