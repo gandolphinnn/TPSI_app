@@ -23,23 +23,26 @@
 	Affitto: (id_affitto PK, inizio, fine, mensilità, mesi_pagati, id_appartamento FK, id_cliente FK);
 	Cliente: (id_cliente PK, CF U, nome, cognome, data_nascità, contatto U);
 
-# pagine
-	!db
-	 |__db_appartamenti.sql
-	auth
-	 |__login
-	 |__logout
-	admin
-	 |__index.php
-	 |__appartments
-	 |	 |__* showAll !!
-	 |	 |__add
-	 |	 |__edit
-	 |__rents
-		 |__* showAll
-		 |__add !!
-		 |__edit
-	includes
+# root
+ |__!db
+ |	 |__db_appartamenti.sql
+ |
+ |__auth
+ |	 |__login
+ |	 |__logout
+ |
+ |__admin
+ |	 |__index.php
+ |	 |__appartments
+ |	 |	 |__* showAll !!
+ |	 |	 |__add
+ |	 |	 |__edit
+ |	 |__rents
+ |		 |__* showAll
+ |		 |__add !!
+ |		 |__edit
+ |
+ |__includes
 	 |__fontend
 	 |	 |__style.css
 	 |__backend
