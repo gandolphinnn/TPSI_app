@@ -1,3 +1,7 @@
 body {
-    background-color: darkgray;
+	background-color: darkgray;
+}
+form {
+	display: flex;
+	flex-direction: column;
 }
