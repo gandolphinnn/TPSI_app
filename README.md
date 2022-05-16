@@ -36,7 +36,7 @@
 	 |	 |__add
 	 |	 |__edit
 	 |__buildings
-	 |	 |__showAll
+	 |	 |__showAll !!
 	 |	 |__add
 	 |	 |__edit
 	 |__appartments
@@ -45,7 +45,7 @@
 	 |	 |__edit
 	 |__rents
 		 |__showAll
-		 |__add
+		 |__add !!
 		 |__edit
 	includes
 	 |__fontend
