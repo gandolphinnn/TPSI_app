@@ -22,17 +22,22 @@
 
 	Edificio: (id_edificio PK, codice U, indirizzo, piani, appartamenti);
 	Appartamento: (id_appartamento PK, locali, piano, metratura, id_edificio FK);
-	Affitto: (id_affitto PK, data_inizio, data_fine, mensilità, mesi_pagati, id_appartamento FK, id_cliente FK);
+	Affitto: (id_affitto PK, data_inizio, data_fine, mensilità, mesi_pagati,
+		id_appartamento FK, id_cliente FK);
 	Cliente: (id_cliente PK, codice_fiscale U, nome, cognome, data_nascita, telefono U);
 
 # Query
 	1) INSERT INTO affitto (inizio, mensilità, id_appartamento, id_cliente)
-		VALUES($inizio, $mensilità, $id_appartamento, $id_cliente)
+	VALUES($inizio, $mensilità, $id_appartamento, $id_cliente)
 
-	2) SELECT ap.* FROM appartamento ap LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento WHERE id_affitto IS NULL
-		AND ($min_metratura IS NULL OR $max_metratura IS NULL OR metratura BETWEEN $min_metratura AND $max_metratura)
-		AND ($min_locali IS NULL OR $max_locali IS NULL OR locali BETWEEN $min_locali AND $max_locali)
-		AND ($min_mensilità IS NULL OR $max_mensilità IS NULL OR mensilità BETWEEN $min_mensilità AND $max_mensilità);
+	2) SELECT ap.* FROM appartamento ap LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento
+		WHERE id_affitto IS NULL
+		AND ($min_metratura IS NULL OR $max_metratura IS NULL
+		OR metratura BETWEEN $min_metratura AND $max_metratura)
+		AND ($min_locali IS NULL OR $max_locali IS NULL
+		OR locali BETWEEN $min_locali AND $max_locali)
+		AND ($min_mensilità IS NULL OR $max_mensilità IS NULL
+		OR mensilità BETWEEN $min_mensilità AND $max_mensilità);
 
 # Root
 	|__!db
