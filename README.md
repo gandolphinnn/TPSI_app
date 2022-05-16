@@ -32,19 +32,19 @@
 	admin
 	 |__index.php
 	 |__clients
-	 |	 |__showAll
+	 |	 |__* showAll
 	 |	 |__add
 	 |	 |__edit
 	 |__buildings
-	 |	 |__showAll !!
+	 |	 |__* showAll !!
 	 |	 |__add
 	 |	 |__edit
 	 |__appartments
-	 |	 |__showAll
+	 |	 |__* showAll
 	 |	 |__add
 	 |	 |__edit
 	 |__rents
-		 |__showAll
+		 |__* showAll
 		 |__add !!
 		 |__edit
 	includes
