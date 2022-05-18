@@ -51,7 +51,6 @@
 	|
 	|__client
 		|__index.html			(view)					(Di Florio)
-		|__index.js			(view manipulator)			(Di Florio)
+		|__index.js			(view presenter)			(Di Florio / Gandolfi)
 		|__mw.js			(middleware  client)			(Gandolfi)
-		|__presenter.js			(presenter affitto/appartamenti)	(Gandolfi)
 		|__style.css			(css)					(Di Florio)
