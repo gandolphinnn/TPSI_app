@@ -41,17 +41,17 @@
 
 # Root
 	|__!db
-	|	 |__db_immobiliare.sql		(file di creazione db)
-	|	 |__db_schema.png		(schema logico db)
+	|	 |__db_immobiliare.sql		(file di creazione db)	(Ademi)
+	|	 |__db_schema.png		(schema logico db)	(Ademi)
 	|
 	|__server
-	|	 |__db_access.php		(accesso al db)
-	|	 |__logic.php			(logica di accesso al db)
-	|	 |__mw.php			(middleware server)
+	|	 |__db_access.php		(accesso al db)	(Ademi)
+	|	 |__logic.php			(logica di accesso al db)	(Gandolfi)
+	|	 |__mw.php			(middleware server)	(Gandolfi)
 	|
 	|__client
-		|__index.html			(view)
-		|__index.js			(view manipulator)
-		|__mw.js			(middleware  client)
-		|__presenter.js			(presenter affitto/appartamenti)
-		|__style.css			(css)
+		|__index.html			(view)	(Di Florio)
+		|__index.js			(view manipulator)	(Di Florio)
+		|__mw.js			(middleware  client)	(Gandolfi)
+		|__presenter.js			(presenter affitto/appartamenti)	(Gandolfi)
+		|__style.css			(css)	(Di Florio)
