@@ -18,8 +18,8 @@
 	minimo e massimo impostati dall'utente, e/o numero di locali tra minimo e
 	massimo impostati dall'utente, e/o infine un canone compreso tra un minimo
 	ed un massimo impostati dall'utente.
-# Entità
 
+# Entità
 	Edificio: (id_edificio PK, codice U, indirizzo, piani, appartamenti);
 	Appartamento: (id_appartamento PK, locali, piano, metratura, id_edificio FK);
 	Affitto: (id_affitto PK, data_inizio, data_fine, mensilità, mesi_pagati,
