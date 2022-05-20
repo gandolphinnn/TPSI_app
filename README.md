@@ -40,17 +40,21 @@
 		AND ($max_mensilità IS NULL OR mensilità < $max_mensilità);
 
 # Root
-	|__!db
-	|	 |__db_immobiliare.sql	(file di creazione db)		(Ademi)
-	|	 |__db_schema.png	(schema logico db)		(Ademi)
+	|___!db
+	|	|___db_immobiliare.sql	(file di creazione db)		(Ademi)
+	|	|___db_schema.png	(schema logico db)		(Ademi)
 	|
-	|__server
-	|	 |__db_access.php	(accesso al db)			(Ademi)
-	|	 |__logic.php		(logica di accesso al db)	(Gandolfi)
-	|	 |__mw.php		(middleware server)		(Gandolfi)
+	|___server
+	|	|___db_access.php	(accesso al db)			(Ademi)
+	|	|___logic.php		(logica di accesso al db)	(Gandolfi)
+	|	|___mw.php		(middleware server)		(Gandolfi)
 	|
-	|__client
-		|__index.html		(view)				(Di Florio)
-		|__index.js		(view presenter)		(Di Florio / Gandolfi)
-		|__mw.js		(middleware  client)		(Gandolfi)
-		|__style.css		(css)				(Di Florio)
+	|___client
+		|___index.html		(view)				(Di Florio)
+		|___index.js		(view presenter)		(Di Florio / Gandolfi)
+		|___mw.js		(middleware  client)		(Gandolfi)
+		|___style.css		(css)				(Di Florio)
+		|___affitti
+		|	|___index.html
+		|___appartamenti
+			|___index.html
