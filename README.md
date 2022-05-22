@@ -52,12 +52,12 @@
 	|	|___mw.php		(middleware server)		(Gandolfi)
 	|
 	|___client
-		|___index.html		(homepage)				(Di Florio)
+		|___index.html		(homepage)			(Di Florio)
 		|___mw.js		(middleware  client)		(Gandolfi)
 		|___style.css		(css)				(Di Florio)
 		|___affitti
-		|	|___index.html	(view)		(Di Florio)
+		|	|___index.html	(view)				(Di Florio)
 		|	|___index.js	(view presenter)		(Di Florio / Gandolfi)
 		|___appartamenti
-			|___index.html	(view)		(Di Florio)
+			|___index.html	(view)				(Di Florio)
 			|___index.js	(view presenter)		(Di Florio / Gandolfi)
