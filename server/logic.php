@@ -7,7 +7,6 @@ class Logic {
 	}
 
 	public function getData() {
-		//debug(json_encode($this->db->getData()));
 		return $this->db->getData();
 	}
 
@@ -15,10 +14,7 @@ class Logic {
 		return $this->db->select();
 	}
 
-	/* public function create($todo) {
-		$result = $this->db->create($todo['title'], $todo['date']);
-		return $result;
-	} */
+	public function create($values) {
+		return $this->db->create($values);
+	}
 }
-$l = new Logic();
-$l->getData();

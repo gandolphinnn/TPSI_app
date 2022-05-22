@@ -7,12 +7,10 @@ class Presenter {
 	//* init view
 	init() {
 		document.querySelector("#inizio").value = new Date().toISOString().split('T')[0];
-		document.querySelector("#conferma")
-		.addEventListener('click', () => {
+		document.querySelector("#conferma").addEventListener('click', () => {
 			this.add();
 		});
-		document.querySelector("#reset")
-		.addEventListener('click', () => {
+		document.querySelector("#reset").addEventListener('click', () => {
 			document.querySelector("#cliente").value = '';
 			document.querySelector("#appartamento").value = '';
 			document.querySelector("#inizio").value = '';
@@ -27,12 +25,10 @@ class Presenter {
 			inizio: document.querySelector("#inizio").value,
 			canone: document.querySelector("#canone").value
 		};
-		console.log(data);
-		this.middleware.create(data, this.feedback);
+		this.middleware.create(data);
 	}
 	//* refresh view with data from 'appartamenti' and 'clienti'
 	refresh(data) {
-		console.log(data);
 		let template = '<option value="%VALUE">%TITLE</option>';
 
 		data.clienti.forEach(cl => {
@@ -48,15 +44,6 @@ class Presenter {
 			option = option.replace('%TITLE', titolo);
 			document.querySelector('#appartamento').innerHTML += option;
 		});
-	}
-	feedback(result) {
-		if (result) {
-			confirm('Affitto aggiunto correttamente')
-			window.location.href = "../";
-		}
-		else {
-			alert('');
-		}
 	}
 }
 window.onload = () => {

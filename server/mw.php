@@ -38,20 +38,16 @@ class RestService {
 					$jsonResponse = json_encode($result);
 					echo $jsonResponse;
 				break;
-				/* case 'POST':
+				case 'POST':
 					$data = json_decode(file_get_contents('php://input'), true);
-					if (array_key_exists("title",$data) && array_key_exists("date",$data)) {
-						$result = $logic->createOne($data);
-						if ($result) {
-							$this->returnOk();
-						} else {
-							$this->returnKO(400);
-						}
+					$result = $logic->create($data);
+					if ($result) {
+						$this->returnOk();
 					} else {
-						$this->returnKO(400);
+						$this->returnErr(400);
 					}
-				break; */
-			} 
+				break;
+			}
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}	

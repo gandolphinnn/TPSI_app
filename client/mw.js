@@ -2,13 +2,20 @@ class Middleware {
 	constructor() {
 		this.url = '../../server/mw.php';
 	}
-	/* create(todo, callback) {
-		const body = JSON.stringify(todo);
-		this.connect('POST', this.url, body, () => {
+	create(data) {
+		const body = JSON.stringify(data);
+		this.connect('POST', this.url, body, (res) => {
+			if (res) {
+				if(confirm('Affitto aggiunto correttamente, vuoi tornare alla home?')) {
+					window.location.href = "../";
+				}
+			}
+			else {
+				alert('Errore');
+			}
 		})
-		callback(); 
 	}
-	getApp(callback) {
+	/* getApp(callback) {
 		let action = (response) => {
 			console.log(response);
 			const data = JSON.parse(response);
