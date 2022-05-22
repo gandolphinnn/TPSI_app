@@ -22,13 +22,15 @@
 # Entità
 	Edificio: (id_edificio PK, codice U, indirizzo, piani, appartamenti);
 	Appartamento: (id_appartamento PK, locali, piano, metratura, id_edificio FK);
-	Affitto: (id_affitto PK, data_inizio, data_fine, mensilità, mesi_pagati,
+	Affitto: (id_affitto PK, data_inizio, data_fine, canone, mesi_pagati,
 		id_appartamento FK, id_cliente FK);
 	Cliente: (id_cliente PK, codice_fiscale U, nome, cognome, data_nascita, telefono U);
 
 # Query
-	1) INSERT INTO affitto (inizio, mensilità, id_appartamento, id_cliente)
-	VALUES($inizio, $mensilità, $id_appartamento, $id_cliente)
+	pre 1) SELECT id_appartamento, indirizzo, piano FROM appartamento NATURAL JOIN edificio;
+	pre 1) SELECT id_cliente, codice_fiscale, cognome, nome FROM cliente;
+	1) INSERT INTO affitto (inizio, canone, id_appartamento, id_cliente)
+	VALUES($inizio, $canone, $id_appartamento, $id_cliente)
 
 	2) SELECT ap.* FROM appartamento ap LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento
 		WHERE id_affitto IS NULL
@@ -36,8 +38,8 @@
 		AND ($max_metratura IS NULL OR metratura < $max_metratura)
 		AND ($min_locali IS NULL OR locali > $min_locali)
 		AND ($max_locali IS NULL OR locali < $max_locali)
-		AND ($min_mensilità IS NULL OR mensilità > $min_mensilità)
-		AND ($max_mensilità IS NULL OR mensilità < $max_mensilità);
+		AND ($min_canone IS NULL OR canone > $min_canone)
+		AND ($max_canone IS NULL OR canone < $max_canone);
 
 # Root
 	|___!db
@@ -50,11 +52,12 @@
 	|	|___mw.php		(middleware server)		(Gandolfi)
 	|
 	|___client
-		|___index.html		(view)				(Di Florio)
-		|___index.js		(view presenter)		(Di Florio / Gandolfi)
+		|___index.html		(homepage)				(Di Florio)
 		|___mw.js		(middleware  client)		(Gandolfi)
 		|___style.css		(css)				(Di Florio)
 		|___affitti
-		|	|___index.html
+		|	|___index.html	(view)		(Di Florio)
+		|	|___index.js	(view presenter)		(Di Florio / Gandolfi)
 		|___appartamenti
-			|___index.html
+			|___index.html	(view)		(Di Florio)
+			|___index.js	(view presenter)		(Di Florio / Gandolfi)

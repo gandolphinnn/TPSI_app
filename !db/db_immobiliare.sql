@@ -31,7 +31,7 @@ CREATE TABLE `affitto` (
   `id_affitto` int(11) NOT NULL,
   `data_inizio` date NOT NULL,
   `data_fine` date DEFAULT NULL,
-  `mensilità` double NOT NULL,
+  `canone` double NOT NULL,
   `mesi_pagati` int(11) DEFAULT 0,
   `id_appartamento` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL
@@ -41,7 +41,7 @@ CREATE TABLE `affitto` (
 -- Dump dei dati per la tabella `affitto`
 --
 
-INSERT INTO `affitto` (`id_affitto`, `data_inizio`, `data_fine`, `mensilità`, `mesi_pagati`, `id_appartamento`, `id_cliente`) VALUES
+INSERT INTO `affitto` (`id_affitto`, `data_inizio`, `data_fine`, `canone`, `mesi_pagati`, `id_appartamento`, `id_cliente`) VALUES
 (1, '2022-05-02', '2022-08-02', 120, 3, 1, 1),
 (2, '2014-03-08', '2014-10-08', 55.54, 7, 2, 2),
 (3, '2012-04-04', '2012-08-04', 300, 4, 3, 3),

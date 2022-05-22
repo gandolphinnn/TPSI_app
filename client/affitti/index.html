@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<title>Affitti</title>
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+		<h1>Affitti</h1>
+		<div class="content">
+			<div class="form">
+				<label for="cliente">Cliente</label>
+				<select name="cliente" id="cliente" required>
+					<option value="">Scegli un cliente</option>
+				</select>
+				<label for="appartamento">Appartamento</label>
+				<select name="appartamento" id="appartamento" required>
+					<option value="">Scelgi un appartamento</option>
+				</select>
+				<label for="inizio">Data di inizio</label>
+				<input type="date" name="inizio" id="inizio" required>
+				<label for="canone">Canone mensile</label>
+				<input type="number" name="canone" id="canone" min="0" step="0.01" required>
+				<div class="btns">
+					<input type="reset" value="Reset" id="reset">
+					<input type="submit" value="Conferma" id="conferma">
+				</div>
+			</div>
+			<div class="btns">
+				<button onclick="window.location = '../'">Home</button>
+			</div>
+		</div>
+	</body>
+	<script src="../mw.js"></script>
+	<script src="index.js"></script>
+</html>
