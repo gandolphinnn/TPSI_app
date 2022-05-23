@@ -17,3 +17,15 @@ input {
 	border:1px solid black;
 	padding-left: 10px;
 }
+tbody {
+	max-height: 500px;
+	overflow-y: auto;
+}
+button{
+	margin-top: 10px;
+	outline: none;
+	border-radius: 15px;
+	border:1px solid black;
+	padding-left: 10px;
+	height: 45px;
+}

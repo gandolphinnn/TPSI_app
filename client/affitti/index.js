@@ -1,10 +1,9 @@
 class Presenter {
 	constructor() {
-		this.init();
 		this.middleware = new Middleware();
-		this.middleware.getData(this.refresh);
+		this.middleware.getData(this.init);
 	}
-	//* init view
+	//* init della view con gli eventi e i dati
 	init() {
 		document.querySelector("#inizio").value = new Date().toISOString().split('T')[0];
 		document.querySelector("#conferma").addEventListener('click', () => {
@@ -16,21 +15,8 @@ class Presenter {
 			document.querySelector("#inizio").value = '';
 			document.querySelector("#canone").value = '';
 		});
-	}
-	//* new affitto
-	add() {
-		const data = {
-			cliente: document.querySelector("#cliente").value,
-			appartamento: document.querySelector("#appartamento").value,
-			inizio: document.querySelector("#inizio").value,
-			canone: document.querySelector("#canone").value
-		};
-		this.middleware.create(data);
-	}
-	//* refresh view with data from 'appartamenti' and 'clienti'
-	refresh(data) {
-		let template = '<option value="%VALUE">%TITLE</option>';
 
+		let template = '<option value="%VALUE">%TITLE</option>';
 		data.clienti.forEach(cl => {
 			let option = template.replace("%VALUE", cl.id_cliente);
 			let titolo = 'id: '+cl.id_cliente+', '+cl.cognome+' '+cl.nome+', '+cl.codice_fiscale;
@@ -44,6 +30,16 @@ class Presenter {
 			option = option.replace('%TITLE', titolo);
 			document.querySelector('#appartamento').innerHTML += option;
 		});
+	}
+	//* nuovo affitto
+	add() {
+		const data = {
+			cliente: document.querySelector("#cliente").value,
+			appartamento: document.querySelector("#appartamento").value,
+			inizio: document.querySelector("#inizio").value,
+			canone: document.querySelector("#canone").value
+		};
+		this.middleware.create(data);
 	}
 }
 window.onload = () => {

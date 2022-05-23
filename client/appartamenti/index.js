@@ -1,31 +1,40 @@
 class Presenter {
 	constructor() {
-		this.filtersArr = [];
-		this.init();
 		this.middleware = new Middleware();
-		this.middleware.getApp(this.refresh, '');
+		this.filtersArr = {}; //* array di filtri
+		this.init();
 	}
+	//* inizializza la vista
 	init() {
 		document.querySelectorAll('input').forEach(input => {
-			this.filtersArr.push({
-				key: input.id,
-				value: ''
-			});
+			this.filtersArr[input.id] = 'null';
 			input.onkeyup = () => {
-				this.filter(input.id, input.value);
+				this.filtersArr[input.id] = (input.value != ''? input.value : 'null');
+				this.update();
 			}
 			input.onclick = () => {
-				this.filter(input.id, input.value);
+				this.filtersArr[input.id] = (input.value != ''? input.value : 'null');
+				this.update();
 			}
 		});
+		this.update();
 	}
-	filter(id, value) {
-		let filters = '';
-
-		this.middleware.getApp(this.refresh, filters);
+	//* update dei filtri
+	update() {
+		let filterGet = '';
+		Object.entries(this.filtersArr).forEach(filter => {
+			filterGet += '&'+filter[0]+'='+filter[1];
+		});
+		this.middleware.getApp(this.refresh, filterGet);
 	}
+	//* refresh della view
 	refresh(data) {
+		if (!data) {
+			document.querySelector('#appartamenti').innerHTML = '<tr>Nessun appartamento trovato</tr>';
+			return;
+		}
 		const template = '<tr><td>%INDIRIZZO</td><td>%PIANO</td><td>%LOCALI</td><td>%METRATURA</td><td>%CANONE</td></tr>'
+		document.querySelector('#appartamenti').innerHTML = '';
 		data.forEach(appartamento => {
 			let row = template.replace('%INDIRIZZO', appartamento.indirizzo);
 			row = row.replace('%PIANO', appartamento.piano);

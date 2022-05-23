@@ -2,6 +2,7 @@ class Middleware {
 	constructor() {
 		this.url = '../../server/mw.php';
 	}
+	//* inserisci nuovo affitto
 	create(data) {
 		const body = JSON.stringify(data);
 		this.connect('POST', this.url, body, (res) => {
@@ -15,14 +16,15 @@ class Middleware {
 			}
 		})
 	}
+	//* ottieni gli appartamenti
 	getApp(callback, filters) {
 		let action = (response) => {
-			console.log(response);
 			const data = JSON.parse(response);
 			callback(data);
 		};
-		this.connect('GET', this.url + '?app=true&' + filters, null, action);
+		this.connect('GET', this.url + '?app=true' + filters, null, action);
 	}
+	//* ottieni i dati su app e clienti per la INSERT
 	getData(callback) {
 		let action = (response) => {
 			const data = JSON.parse(response);
@@ -30,6 +32,7 @@ class Middleware {
 		};
 		this.connect('GET', this.url + '?data', null, action);
 	}
+	//* connettiti al server
 	connect(method, url, body, callback) {
 		const xhr = new XMLHttpRequest();
 		xhr.open(method, url);
