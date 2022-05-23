@@ -3,23 +3,34 @@
 	<head>
 		<title>Appartamenti</title>
 		<link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<h1>Appartamenti</h1>
-		<table id="filters">
-
-		</table>
 		<table id="content">
-			<thead>
-				<th>INDIRIZZO</th>
+			<tr>
+				<td colspan="2"></td>
+				<td><input type="number" id="min_loc" placeholder="min locali"></td>
+				<td><input type="number" id="min_metr" placeholder="min metratura"></td>
+				<td><input type="number" id="min_can" placeholder="min canone"></td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<td><input type="number" id="max_loc" placeholder="max locali"></td>
+				<td><input type="number" id="max_metr" placeholder="max metratura"></td>
+				<td><input type="number" id="max_can" placeholder="max canone"></td>
+			</tr>
+				<th style="width: 500px">INDIRIZZO</th>
 				<th>PIANO</th>
 				<th>LOCALI</th>
 				<th>METRATURA</th>
 				<th>CANONE</th>
-			</thead>
-			<tbody>
+			<tbody id="appartamenti">
 			</tbody>
 		</table>
+		<div class="btns">
+			<button onclick="window.location = '../'">Home</button>
+		</div>
 	</body>
 	<script src="../mw.js"></script>
 	<script src="index.js"></script>

@@ -31,8 +31,11 @@ class RestService {
 				case 'GET':
 					if (isset($_GET['data'])):
 						$result = $logic->getData();
-					elseif (isset($_GET['app'])):	
-						$result = $logic->getApp();
+					elseif (isset($_GET['app'])):
+						$filters = ['min_metratura' => 'null', 'max_metratura' => 'null',
+						'min_locali' => 'null', 'max_locali' => 'null',
+						'min_canone' => 'null', 'max_canone' => 'null'];
+						$result = $logic->getApp($filters);
 					endif;
 					$this->setHttpHeaders("application/json", 200);
 					$jsonResponse = json_encode($result);

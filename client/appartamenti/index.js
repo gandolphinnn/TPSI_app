@@ -1,57 +1,39 @@
-const titolo = document.getElementById('titolo');
-const contenuto = document.getElementById('contenuto');
 class Presenter {
 	constructor() {
+		this.filtersArr = [];
 		this.init();
 		this.middleware = new Middleware();
-		this.middleware.read(this.refresh);
+		this.middleware.getApp(this.refresh, '');
 	}
-
 	init() {
-		document.querySelector("#date").value = new Date().toISOString().split('T')[0];
-		document.querySelector("#send")
-		.addEventListener('click', () => {
-			this.add();
+		document.querySelectorAll('input').forEach(input => {
+			this.filtersArr.push({
+				key: input.id,
+				value: ''
+			});
+			input.onkeyup = () => {
+				this.filter(input.id, input.value);
+			}
+			input.onclick = () => {
+				this.filter(input.id, input.value);
+			}
 		});
 	}
+	filter(id, value) {
+		let filters = '';
 
-	add() {
-		const todo = {
-			title: document.querySelector("#title").value,
-			date: document.querySelector("#date").value
-		}
-		document.querySelector("#title").value = "";
-		this.middleware.create(todo, this.refresh);
+		this.middleware.getApp(this.refresh, filters);
 	}
-
-	remove(index) {
-		this.middleware.delete(index, this.refresh);
-	}
-
-	complete(index) {
-		this.middleware.complete(index, this.refresh);
-	}
-
-	refresh(list) {
-		let template = `
-			<li class="element">
-				<div class="title %COMPLETE">%TITLE</div>
-				<button class="complete" onclick="presenter.complete(%ID)">V</button>
-				<button class="delete" onclick="presenter.remove(%ID)">X</button>
-			</li>
-		`;
-		let html = "";
-		list.forEach(element => {
-			let date = new Date(element.date);
-
-			let row = template.replace("%TITLE", date.toLocaleDateString() + ": " + element.title);
-			row = row.replace("%ID", element.id);
-			row = row.replace("%ID", element.id);
-			row = row.replace("%COMPLETE", element.completed == '1' ? "complete" : "");
-			row = row.replace("%COMPLETE", element.completed == '1' ? "complete" : "");
-			html += row;
+	refresh(data) {
+		const template = '<tr><td>%INDIRIZZO</td><td>%PIANO</td><td>%LOCALI</td><td>%METRATURA</td><td>%CANONE</td></tr>'
+		data.forEach(appartamento => {
+			let row = template.replace('%INDIRIZZO', appartamento.indirizzo);
+			row = row.replace('%PIANO', appartamento.piano);
+			row = row.replace('%LOCALI', appartamento.locali);
+			row = row.replace('%METRATURA', appartamento.metratura);
+			row = row.replace('%CANONE', appartamento.canone);
+			document.querySelector('#appartamenti').innerHTML += row;
 		});
-		document.querySelector('ul').innerHTML = html;
 	}
 }
 

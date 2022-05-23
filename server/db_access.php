@@ -37,9 +37,6 @@
 		}
 		
 		public function select($filters, $debug = false, $die = false) {
-			/* $filters = ['min_metratura' => 'null', 'max_metratura' => 'null',
-						'min_locali' => 'null', 'max_locali' => 'null',
-						'min_canone' => 'null', 'max_canone' => 'null']; */
 			$sql = 'SELECT indirizzo, piano, locali, metratura, canone FROM appartamento ap 
 			NATURAL JOIN edificio LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento
 			WHERE id_affitto IS NOT NULL
@@ -61,7 +58,6 @@
 		}
 		
 		public function create($values, $debug = false, $die = false) {
-			//$values = ['inizio' => '2022-05-22', 'canone' => '25', 'appartamento' => '3', 'cliente' => '3'];
 			$sql = 'INSERT INTO affitto (data_inizio, canone, id_appartamento, id_cliente)
 					values ("'.$values['inizio'].'", '.$values['canone'].', '.$values['appartamento'].', '.$values['cliente'].')';
 			if ($debug):

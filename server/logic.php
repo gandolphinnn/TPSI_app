@@ -10,8 +10,8 @@ class Logic {
 		return $this->db->getData();
 	}
 
-	public function getApp() {
-		return $this->db->select();
+	public function getApp($filters) {
+		return $this->db->select($filters);
 	}
 
 	public function create($values) {

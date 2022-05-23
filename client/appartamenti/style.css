@@ -1,0 +1,19 @@
+input {
+	max-width: 200px;
+}
+table, th, td {
+	border: 3px solid black;
+	border-collapse: collapse;
+}
+th {
+	width: 200px;
+}
+tr:hover {
+	background-color: rgb(126, 124, 124);
+}
+input {
+	outline: none;
+	border-radius: 15px;
+	border:1px solid black;
+	padding-left: 10px;
+}

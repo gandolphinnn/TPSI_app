@@ -15,14 +15,14 @@ class Middleware {
 			}
 		})
 	}
-	/* getApp(callback) {
+	getApp(callback, filters) {
 		let action = (response) => {
 			console.log(response);
 			const data = JSON.parse(response);
 			callback(data);
 		};
-		this.connect('GET', this.url + '?app', null, action);
-	} */
+		this.connect('GET', this.url + '?app=true&' + filters, null, action);
+	}
 	getData(callback) {
 		let action = (response) => {
 			const data = JSON.parse(response);

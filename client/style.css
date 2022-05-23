@@ -23,36 +23,3 @@ a {
 	color: black;
 	margin: 10px;
 }
-div.form {
-	display: flex;
-	flex-direction: column;
-}
-select {
-	width: 100%;
-}
-input, select, button{
-	outline: none;
-	border-radius: 15px;
-	border:1px solid black;
-	padding-left: 10px;
-	height: 45px;
-}
-label, div.btns {
-	margin-top: 30px;
-	margin-bottom: 10px;
-}
-div.btns {
-	display: flex;
-}
-input[type="reset"] {
-	width: 50%;
-	border-radius: 15px 0px 0px 15px;
-}
-input[type="submit"] {
-	width: 50%;
-	border-radius: 0px 15px 15px 0px;
-	border-left: 0px;
-}
-button {
-	width: 100%;
-}
