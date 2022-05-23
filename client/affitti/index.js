@@ -4,7 +4,7 @@ class Presenter {
 		this.middleware.getData(this.init);
 	}
 	//* init della view con gli eventi e i dati
-	init() {
+	init(data) {
 		document.querySelector("#inizio").value = new Date().toISOString().split('T')[0];
 		document.querySelector("#conferma").addEventListener('click', () => {
 			this.add();
