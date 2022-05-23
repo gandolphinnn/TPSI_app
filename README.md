@@ -14,7 +14,7 @@
 	Scrivere una applicazione distribuita che:
 	1) permetta di inserire un nuovo affitto noti il codice dell'appartamento, il
 	codice del cliente, canone, data di partenza;
-	2) permetta di ricercare gli appartamenti non affittati con metratura tra indice
+	2) permetta di ricercare gli appartamenti affittati con metratura tra indice
 	minimo e massimo impostati dall'utente, e/o numero di locali tra minimo e
 	massimo impostati dall'utente, e/o infine un canone compreso tra un minimo
 	ed un massimo impostati dall'utente.
@@ -33,7 +33,7 @@
 	VALUES($inizio, $canone, $id_appartamento, $id_cliente)
 
 	2) SELECT ap.* FROM appartamento ap LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento
-		WHERE id_affitto IS NULL
+		WHERE id_affitto IS NOT NULL
 		AND ($min_metratura IS NULL OR metratura > $min_metratura)
 		AND ($max_metratura IS NULL OR metratura < $max_metratura)
 		AND ($min_locali IS NULL OR locali > $min_locali)
