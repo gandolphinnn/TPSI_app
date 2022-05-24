@@ -10,15 +10,15 @@
 		<table id="content">
 			<tr>
 				<td colspan="2">Filtri minimo</td>
-				<td><input type="number" id="min_locali" placeholder="min locali"></td>
-				<td><input type="number" id="min_metratura" placeholder="min metratura"></td>
-				<td><input type="number" id="min_canone" placeholder="min canone"></td>
+				<td><input type="number" min="0" max="" id="min_locali" placeholder="min locali"></td>
+				<td><input type="number" min="0" max="" id="min_metratura" placeholder="min metratura"></td>
+				<td><input type="number" min="0" max="" id="min_canone" placeholder="min canone" step="0.01"></td>
 			</tr>
 			<tr>
 				<td colspan="2">Filtri massimo</td>
-				<td><input type="number" id="max_locali" placeholder="max locali"></td>
-				<td><input type="number" id="max_metratura" placeholder="max metratura"></td>
-				<td><input type="number" id="max_canone" placeholder="max canone"></td>
+				<td><input type="number" min="0" id="max_locali" placeholder="max locali"></td>
+				<td><input type="number" min="0" id="max_metratura" placeholder="max metratura"></td>
+				<td><input type="number" min="0" id="max_canone" placeholder="max canone" step="0.01"></td>
 			</tr>
 				<th style="width: 500px">INDIRIZZO</th>
 				<th>PIANO</th>

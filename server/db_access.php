@@ -13,6 +13,8 @@
 		public function close() {
 			mysqli_close($this->conn);
 		}
+
+		//* trasfroma una query in un array con i risultati
 		private function processQuery($sql) {
 			$result = mysqli_query($this->conn, $sql);
 			if (mysqli_num_rows($result) > 0):
@@ -25,6 +27,8 @@
 				return false;
 			endif;
 		}
+
+		//* prendi i dati degli appartamenti affittati con i filtri
 		public function select($filters) {
 			$sql = 'SELECT indirizzo, piano, locali, metratura, canone FROM appartamento ap 
 			NATURAL JOIN edificio LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento
@@ -38,14 +42,16 @@
 			return $this->processQuery($sql);
 		}
 
+		//* leggi i dati per inserire un nuovo affitto
 		public function getData() {
-			$sql = 'SELECT id_cliente, codice_fiscale, cognome, nome FROM cliente';
+			$sql = 'SELECT id_cliente, codice_fiscale, cognome, nome FROM cliente ORDER BY id_cliente';
 			$res['clienti'] = $this->processQuery($sql);
-			$sql = 'SELECT id_appartamento, indirizzo, piano FROM appartamento NATURAL JOIN edificio';
+			$sql = 'SELECT id_appartamento, indirizzo, piano FROM appartamento NATURAL JOIN edificio ORDER BY id_appartamento';
 			$res['appartamenti'] = $this->processQuery($sql);
 			return $res;
 		}
 		
+		//* inserisci un nuovo affitto
 		public function create($values) {
 			$sql = 'INSERT INTO affitto (data_inizio, canone, id_appartamento, id_cliente)
 					values ("'.$values['inizio'].'", '.$values['canone'].', '
