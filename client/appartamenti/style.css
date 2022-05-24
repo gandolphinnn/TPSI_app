@@ -1,5 +1,5 @@
 input {
-	max-width: 200px;
+	width: 200px;
 }
 table, th, td {
 	border: 3px solid black;
@@ -8,18 +8,14 @@ table, th, td {
 th {
 	width: 200px;
 }
-tr:hover {
-	background-color: rgb(126, 124, 124);
+tbody tr:hover {
+	background-color: rgb(79, 127, 174);
 }
 input {
 	outline: none;
 	border-radius: 15px;
 	border:1px solid black;
 	padding-left: 10px;
-}
-tbody {
-	max-height: 500px;
-	overflow-y: auto;
 }
 button{
 	margin-top: 10px;

@@ -1,10 +1,11 @@
 class Presenter {
 	constructor() {
+		this.init();
 		this.middleware = new Middleware();
-		this.middleware.getData(this.init);
+		this.middleware.getData(this.putData);
 	}
-	//* init della view con gli eventi e i dati
-	init(data) {
+	//* init della view con gli eventi
+	init() {
 		document.querySelector("#inizio").value = new Date().toISOString().split('T')[0];
 		document.querySelector("#conferma").addEventListener('click', () => {
 			this.add();
@@ -15,7 +16,9 @@ class Presenter {
 			document.querySelector("#inizio").value = '';
 			document.querySelector("#canone").value = '';
 		});
-
+	}
+	//* inserisci i dati nella select
+	putData(data) {
 		let template = '<option value="%VALUE">%TITLE</option>';
 		data.clienti.forEach(cl => {
 			let option = template.replace("%VALUE", cl.id_cliente);

@@ -9,10 +9,12 @@ class Presenter {
 		document.querySelectorAll('input').forEach(input => {
 			this.filtersArr[input.id] = 'null';
 			input.onkeyup = () => {
+				if (input.value < 0) input.value = 0;
 				this.filtersArr[input.id] = (input.value != ''? input.value : 'null');
 				this.update();
 			}
 			input.onclick = () => {
+				if (input.value < 0) input.value = 0;
 				this.filtersArr[input.id] = (input.value != ''? input.value : 'null');
 				this.update();
 			}
@@ -23,7 +25,17 @@ class Presenter {
 	update() {
 		let filterGet = '';
 		Object.entries(this.filtersArr).forEach(filter => {
-			filterGet += '&'+filter[0]+'='+filter[1];
+			let oppositeFilter;
+			if (filter[0].slice(0, 3) == 'min') {
+				oppositeFilter = 'max' + filter[0].slice(3);
+			}
+			else {
+				oppositeFilter = 'min' + filter[0].slice(3);
+			}
+			document.querySelector('#' + oppositeFilter).setAttribute(filter[0].slice(0, 3), filter[1]);
+			if (filter[1] != '') {
+				filterGet += '&'+filter[0]+'='+(filter[1] < 0? 'null' : filter[1]);
+			}
 		});
 		this.middleware.getApp(this.refresh, filterGet);
 	}

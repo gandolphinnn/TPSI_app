@@ -7,9 +7,7 @@ class Middleware {
 		const body = JSON.stringify(data);
 		this.connect('POST', this.url, body, (res) => {
 			if (res) {
-				if(confirm('Affitto aggiunto correttamente, vuoi tornare alla home?')) {
-					window.location.href = "../";
-				}
+				alert('Affitto aggiunto correttamente')
 			}
 			else {
 				alert('Errore');

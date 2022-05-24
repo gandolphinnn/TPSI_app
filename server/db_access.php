@@ -30,7 +30,7 @@
 
 		//* prendi i dati degli appartamenti affittati con i filtri
 		public function select($filters) {
-			$sql = 'SELECT indirizzo, piano, locali, metratura, canone FROM appartamento ap 
+			$sql = 'SELECT DISTINCT indirizzo, piano, locali, metratura, canone FROM appartamento ap 
 			NATURAL JOIN edificio LEFT JOIN affitto af ON ap.id_appartamento = af.id_appartamento
 			WHERE id_affitto IS NOT NULL
 			AND ('.$filters['min_metratura'].' IS NULL OR metratura >= '.$filters['min_metratura'].')
@@ -38,15 +38,16 @@
 			AND ('.$filters['min_locali'].' IS NULL OR locali >= '.$filters['min_locali'].')
 			AND ('.$filters['max_locali'].' IS NULL OR locali <= '.$filters['max_locali'].')
 			AND ('.$filters['min_canone'].' IS NULL OR canone >= '.$filters['min_canone'].')
-			AND ('.$filters['max_canone'].' IS NULL OR canone <= '.$filters['max_canone'].');';
+			AND ('.$filters['max_canone'].' IS NULL OR canone <= '.$filters['max_canone'].')
+			LIMIT 15;';
 			return $this->processQuery($sql);
 		}
 
 		//* leggi i dati per inserire un nuovo affitto
 		public function getData() {
-			$sql = 'SELECT id_cliente, codice_fiscale, cognome, nome FROM cliente ORDER BY id_cliente';
+			$sql = 'SELECT DISTINCT id_cliente, codice_fiscale, cognome, nome FROM cliente ORDER BY id_cliente';
 			$res['clienti'] = $this->processQuery($sql);
-			$sql = 'SELECT id_appartamento, indirizzo, piano FROM appartamento NATURAL JOIN edificio ORDER BY id_appartamento';
+			$sql = 'SELECT DISTINCT id_appartamento, indirizzo, piano FROM appartamento NATURAL JOIN edificio ORDER BY id_appartamento';
 			$res['appartamenti'] = $this->processQuery($sql);
 			return $res;
 		}
